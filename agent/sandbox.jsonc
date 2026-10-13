@@ -1,0 +1,41 @@
+{
+  "enabled": true,
+  "sandboxUserShell": false, // Sandbox commands entered with `!`. Defaults to true
+  "permissionPromptTimeoutSeconds": 600, // Defaults to 10 minutes; 0 waits indefinitely
+  "allowBrowserProcess": true, // If you want to use agent-browser or similar Chrome setup
+  "network": {
+    "allowLocalBinding": true, // ditto
+    "allowAllUnixSockets": true, // ditto
+    "allowUnauthenticatedSocksProxy": true, // Enables Git-over-SSH on macOS
+    "disabled": false, // Set true for direct network access (no proxy/--unshare-net) while keeping filesystem sandboxing
+    "allowSSHAgentSocket": true, // Allow the current SSH agent socket (macOS SSH commit signing)
+    "allowedDomains": [
+      "github.com",
+      "*.github.com"
+    ],
+    "deniedDomains": []
+  },
+  "filesystem": {
+    // For READS:
+    // - ANY read is prompted unless the path is in allowRead or allowWrite
+    // - Granting a prompt adds to allowRead, which overrides denyRead
+    // - denyRead is not a hard-block; it just marks regions as denied by default
+    "denyRead": [
+      "/home"
+    ],
+    "allowRead": [
+      "."
+    ],
+    // For WRITES:
+    // - allowWrite also grants read access to the same paths
+    // - empty ALLOW means no write access at all
+    // - DENY takes precedence and is never prompted
+    "allowWrite": [
+      ".",
+      "/tmp"
+    ],
+    "denyWrite": [
+      ".env"
+    ]
+  }
+}
