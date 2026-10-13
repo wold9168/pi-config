@@ -4,7 +4,8 @@
   "defaultProvider": "nvidia",
   "defaultModel": "deepseek-ai/deepseek-v4.1-flash",
   "packages": [
-    "npm:pi-better-sandbox"
+    "npm:pi-better-sandbox",
+    "npm:@bytetrue/pi-web-search"
   ],
   "piBetterHarness": {
     "sandboxPermissions": {
