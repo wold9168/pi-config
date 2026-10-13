@@ -1,6 +1,47 @@
 {
   "lastChangelogVersion": "0.85.1",
   "theme": "light",
-  "defaultProvider": "deepseek",
-  "defaultModel": "deepseek-flash"
+  "defaultProvider": "nvidia",
+  "defaultModel": "deepseek-ai/deepseek-v4.1-flash",
+  "packages": [
+    "npm:pi-better-sandbox"
+  ],
+  "piBetterHarness": {
+    "sandboxPermissions": {
+      "version": 1,
+      "permissions": {
+        "main": {
+          "enabled": true,
+          "projectFiles": "read-write",
+          "outsideProject": "read",
+          "storedCredentials": "read",
+          "commands": true,
+          "network": true,
+          "processAccess": "read"
+        },
+        "subagents": {
+          "enabled": true,
+          "projectFiles": "read-write",
+          "outsideProject": "read",
+          "storedCredentials": "read",
+          "commands": true,
+          "network": true,
+          "processAccess": "read"
+        },
+        "subagentTools": {
+          "applyPatch": true,
+          "trusted": [
+            {
+              "name": "web_fetch",
+              "package": "npm:@juicesharp/rpiv-web-tools"
+            },
+            {
+              "name": "web_search",
+              "package": "npm:@juicesharp/rpiv-web-tools"
+            }
+          ]
+        }
+      }
+    }
+  }
 }
